@@ -1,0 +1,33 @@
+[package]
+name = "argus"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+windows = { version = "0.62", features = [
+	"Win32_System_Diagnostics_ToolHelp",
+	"Win32_Foundation",
+	"Win32_System_Threading",
+	"Win32_System_ProcessStatus",
+	"Win32_Security_WinTrust",
+] }
+crossterm = "0.29"
+ratatui = "0.29"
+anyhow = "1.0"
+once_cell = "1.20"
+num_cpus = "1.17"
+ctrlc = "3.2"
+rayon = "1.7"
+sysinfo = "0.39.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+axum = { version = "0.6", features = ["ws"] }
+tokio = { version = "1.35", features = ["rt-multi-thread", "macros", "sync", "signal"] }
+tokio-tungstenite = "0.20"
+futures = "0.3"
+tokio-stream = "0.1"
+tower-http = { version = "0.3", features = ["cors"] }
+
+[features]
+tui = []

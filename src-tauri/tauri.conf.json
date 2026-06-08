@@ -1,0 +1,22 @@
+{
+  "$schema": "https://tauri.app/schema/tauri.schema.json",
+  "package": {
+    "productName": "argus-tauri",
+    "version": "0.1.0"
+  },
+  "build": {
+    "beforeBuildCommand": "cd ../ui && npm run build",
+    "beforeDevCommand": "cd ../ui && npm run dev",
+    "devPath": "http://localhost:5173",
+    "distDir": "../ui/dist"
+  },
+  "tauri": {
+    "windows": [
+      {
+        "title": "Argus",
+        "width": 1200,
+        "height": 800
+      }
+    ]
+  }
+}

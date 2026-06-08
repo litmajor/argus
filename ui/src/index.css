@@ -1,0 +1,268 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: linear-gradient(180deg, #071126 0%, #020617 100%);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+#root { height: 100vh; }
+
+/* ── Workspace Layout ── */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 0.5rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 18px;
+  color: #cbd5e1;
+}
+
+.app-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.app-sub {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.workspace-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 12px 12px 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.process-pane {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 12px;
+  min-height: 260px;
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.grid-cell {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.6);
+}
+
+/* ── Surface Base ── */
+.surface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.surface header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border-bottom: 1px solid rgba(148,163,184,0.06);
+  flex-shrink: 0;
+}
+
+.surface header h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+/* ── System Surface ── */
+.system-surface {
+  flex-direction: row;
+  gap: 2rem;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  align-items: center;
+}
+
+.metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.metric-label {
+  color: #64748b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric.alert .metric-value { color: #ef4444; }
+
+.threat-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.threat-normal { background: #166534; color: #86efac; }
+.threat-elevated { background: #854d0e; color: #fde047; }
+.threat-suspicious { background: #9a3412; color: #fdba74; }
+.threat-critical { background: #991b1b; color: #fca5a5; }
+
+/* ── Process Surface ── */
+.process-surface .table-container { flex: 1; overflow: auto; }
+
+.process-surface table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.process-surface th {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.02);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  color: #94a3b8;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(148,163,184,0.06);
+}
+
+.process-surface td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  font-variant-numeric: tabular-nums;
+}
+
+.process-surface tr:hover { background: rgba(255,255,255,0.02); cursor: pointer; }
+.process-surface tr.selected { background: rgba(71,85,105,0.18); }
+
+.risk-critical { color: #ef4444; font-weight: 600; }
+.risk-high { color: #f97316; }
+.risk-medium { color: #eab308; }
+.risk-low { color: #22c55e; }
+
+/* ── Process Details ── */
+.process-details dl {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0.4rem 0.75rem;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.process-details dt { color: #64748b; }
+.process-details dd { color: #e2e8f0; }
+.process-details.empty { align-items: center; justify-content: center; color: #475569; }
+
+/* ── Alert Surface ── */
+.alert-list { flex: 1; overflow: auto; padding: 0.5rem; }
+
+.alert {
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border-left: 3px solid;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+}
+
+.alert.severity-critical { border-left-color: #ef4444; }
+.alert.severity-high { border-left-color: #f97316; }
+.alert.severity-medium { border-left-color: #eab308; }
+.alert.severity-low { border-left-color: #22c55e; }
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.alert-header button {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+}
+
+/* ── Timeline Surface ── */
+.event-stream {
+  flex: 1;
+  overflow: auto;
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+}
+
+.event {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #1e293b;
+}
+
+.event .ts { color: #64748b; min-width: 70px; }
+.event .kind { color: #94a3b8; min-width: 120px; }
+.event .summary { color: #cbd5e1; }
+
+.event-cpu .kind { color: #3b82f6; }
+.event-memory .kind { color: #22c55e; }
+.event-security .kind { color: #ef4444; }
+.event-process .kind { color: #a855f7; }
+
+/* ── Graph Surface ── */
+.graph-container { flex: 1; min-height: 0; }
+
+.layout-controls {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.layout-controls button {
+  background: #334155;
+  border: none;
+  color: #94a3b8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.layout-controls button.active {
+  background: #475569;
+  color: #e2e8f0;
+}

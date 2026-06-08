@@ -1,0 +1,41 @@
+# Rust
+/target/
+**/target/
+**/debug/
+
+# Build artifacts
+/build/
+**/build/
+
+# Snapshots and runtime data
+graph_snapshots/
+snapshots/
+timelines/
+events.log
+*.log
+*.db
+*.sqlite
+
+# Editor/IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# Node / JS
+node_modules/
+
+# Misc
+*.bak
+*.tmp
+
+# Cargo.lock: keep for reproducible builds for libraries; for this app we commit it
+
